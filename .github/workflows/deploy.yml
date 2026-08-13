@@ -500,5 +500,5 @@ jobs:
         echo "✅ Tareas configuradas: PreparacionAmbiente → IngestaBitacotaCtrlFile → ExisteArchivos → IngestaEstadisticos → Transform → LoadVisitantes → EliminarRaw"
         echo "✅ Compute configurado: Serverless"
         echo "🚀 Workflow ejecutado automáticamente"
-        echo "next"
+        echo ""
         echo "🔗 Accede a tu workspace de Databricks para ver los resultados detallados   "
