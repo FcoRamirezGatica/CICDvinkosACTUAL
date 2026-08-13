@@ -286,24 +286,25 @@ jobs:
             -H "Authorization: Bearer $DEST_TOKEN" \
             "$DEST_HOST/api/2.1/jobs/get?job_id=$job_id")
           
-          echo "Detalles del workflow:"
+           echo "Detalles del workflow:"
+
           echo "$workflow_details" | jq '
           .settings |
           {
-            name,
-            tasks: (
-              .tasks |
-              map({
-                task_key,
-                type:
-                  if .notebook_task then "NOTEBOOK"
-                  elif .condition_task then "IF_ELSE"
-                  else "OTHER"
-                  end,
-                notebook_path: (.notebook_task.notebook_path // null),
-                condition: (.condition_task // null)
-              })
-            )
+            name: .name,
+            tasks: [
+              .tasks[] |
+              {
+                task_key: .task_key,
+                tipo: (
+                  if .condition_task != null
+                  then "IF_ELSE"
+                  else "NOTEBOOK"
+                  end
+                ),
+                notebook_path: (.notebook_task.notebook_path // null)
+              }
+            ]
           }'
         else
           echo "❌ Error al crear el workflow"
