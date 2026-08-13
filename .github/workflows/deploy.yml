@@ -20,7 +20,7 @@ jobs:
       run: |
         ORIGIN_HOST=${{ secrets.DATABRICKS_ORIGIN_HOST }}
         ORIGIN_TOKEN=${{ secrets.DATABRICKS_ORIGIN_TOKEN }}
-        NOTEBOOK_BASE="/Workspace/Users/vinkos_fr@outlook.com"  #Cambio.. ruta donde estan los notebooks
+        NOTEBOOK_BASE="/Workspace/Users/frank_vinkos@outlook.com/"  #Cambio.. ruta donde estan los notebooks
         NOTEBOOKS=("00.vinkos_Preparacion_Ambiente" "01.vinkos_Ingesta_bitacota_ctrl_file" "02.vinkos_ingesta_estadisticos" "03.Transform" "04.load_visitantes" "05.eliminar_raw" "select_tablas_vinko" ) 
         mkdir -p notebooks_to_deploy
         for nb in "${NOTEBOOKS[@]}"; do
